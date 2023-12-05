@@ -11,14 +11,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
+apiVersion: apiconnect.ibm.com/v1beta1
+kind: APIConnectCluster
 metadata:
-  name: ibm-apiconnect
-  namespace: {{NAMESPACE}}
+  name: ademo
+  namespace: cp4i
+  labels:
+    app.kubernetes.io/instance: apiconnect
+    app.kubernetes.io/managed-by: ibm-apiconnect
+    app.kubernetes.io/name: apiconnect-production
 spec:
-  channel: 5.0
-  installPlanApproval: Automatic
-  name: ibm-apiconnect 
-  source: ibm-operator-catalog 
-  sourceNamespace: openshift-marketplace
+  gateway:
+    replicaCount: 1
+  license:
+    accept: true
+    use: nonproduction
+    license: L-KZXM-S7SNCU
+  profile: n1xc10.m48
+  version: "10.0.6"

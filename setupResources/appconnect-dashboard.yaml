@@ -14,14 +14,14 @@ apiVersion: appconnect.ibm.com/v1beta1
 kind: DesignerAuthoring
 metadata:
   name: ace-designer-demo
-  namespace: {{NAMESPACE}}
+  namespace: cp4i
 spec:
   couchdb:
     replicas: 1
     storage:
       size: 10Gi
       type: persistent-claim
-      class: {{BLOCK_STORAGE}}
+      class: thin
   designerFlowsOperationMode: local
   designerMappingAssist:
     enabled: true
@@ -30,10 +30,10 @@ spec:
       useIncrementalLearning: true
       storage:
         type: persistent-claim
-        class: {{FILE_STORAGE}}
+        class: ocs-storagecluster-cephfs
   license:
     accept: true
-    license: L-AWVV-J3WMK6
+    license: L-MJTK-WUU8HE
     use: CloudPakForIntegrationNonProduction
   replicas: 1
   useCommonServices: true
